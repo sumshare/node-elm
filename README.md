@@ -44,6 +44,8 @@ npm install
 
 npm run dev (需先开启mongodb)
 
+npm run debug (配合node-inspector进行调试)
+
 访问: http://localhost:8001
 
 ```

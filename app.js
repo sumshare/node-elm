@@ -1,5 +1,5 @@
 // 增加了debug命令，用node-inspector进行调试
-// 所以--harmony --debug这些是什么
+// ES6，也就是被大众称为JavaScript的ECMAScript语言规范的下一版，其工作名称为Harmony。
 import express from 'express';
 // 连接数据库
 import db from './mongodb/db.js';
