@@ -6,7 +6,7 @@ import cityData from '../../InitData/cities'
 const citySchema = new mongoose.Schema({
 	data: {}
 });
-
+// 添加 mongoose 静态方法，静态方法在Model层就能使用
 citySchema.statics.cityGuess = function(name){
 	return new Promise(async (resolve, reject) => {
 		const firtWord = name.substr(0,1).toUpperCase();
@@ -86,10 +86,10 @@ citySchema.statics.getCityById = function(id){
 		}
 	})
 }
-
+// 建立数据库model
 const Cities = mongoose.model('Cities', citySchema);
 
-
+// 尝试查找，如果找不到就从文件初始化数据
 Cities.findOne((err, data) => {
 	if (!data) {
 		Cities.create({data: cityData});

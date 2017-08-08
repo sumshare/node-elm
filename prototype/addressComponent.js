@@ -5,15 +5,27 @@ import BaseComponent from './baseComponent'
 /*
 腾讯地图和百度地图API统一调配组件
  */
+
+// 继承了baseComponent
 class AddressComponent extends BaseComponent {
+	// prototype对象的constructor属性，直接指向“类”的本身
+	// Point.prototype.constructor === Point // true
 	constructor(){
 		super();
+		// super(x, y); // 调用父类的constructor(x, y)
+		//都出现了super关键字，它在这里表示父类的构造函数，用来新建父类的this对象
+		//子类必须在constructor方法中调用super方法，否则新建实例时会报错。这是因为子类没有自己的this对象，而是继承父类的this对象，然后对其进行加工。如果不调用super方法，子类就得不到this对象。
+		// 子类的constructor方法没有调用super之前，就使用this关键字，结果报错，而放在super方法之后就是正确的。
+		//super虽然代表了父类A的构造函数，但是返回的是子类B的实例，即super内部的this指的是B,,super()在这里相当于A.prototype.constructor.call(this)
+		// key
+		// this.fetch
 		this.tencentkey = 'RLHBZ-WMPRP-Q3JDS-V2IQA-JNRFH-EJBHL';
 		this.tencentkey2 = 'RRXBZ-WC6KF-ZQSJT-N2QU7-T5QIT-6KF5X';
 		this.baidukey = 'fjke3YUipM9N64GdOIh1DNeK2APO2WcT';
 		this.baidukey2 = 'fjke3YUipM9N64GdOIh1DNeK2APO2WcT';
 	}
-	//获取定位地址
+	// 定义“类”的方法的时候，前面不需要加上function这个关键字，直接把函数定义放进去了就可以了。另外，方法之间不需要逗号分隔，加了会报错。
+	//获取定位地址 
 	async guessPosition(req){
 		return new Promise(async (resolve, reject) => {
 			let ip = req.headers['x-forwarded-for'] || 
@@ -27,6 +39,7 @@ class AddressComponent extends BaseComponent {
 	 		}
 	 		try{
 	 			let result;
+	 			// fetch(url = '', data = {}, type = 'GET', resType = 'JSON')
 		 		result = await this.fetch('http://apis.map.qq.com/ws/location/v1/ip', {
 		 			ip,
 		 			key: this.tencentkey,

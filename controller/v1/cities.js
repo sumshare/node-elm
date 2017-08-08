@@ -1,17 +1,22 @@
 'use strict';
-
+// 对应数据库model
 import Cities from '../../models/v1/cities'
+// 拼音模块
 import pinyin from "pinyin"
+// 引入父类
 import AddressComponent from '../../prototype/addressComponent'
 
 
 class CityHandle extends AddressComponent{
 	constructor(){
+		// ES6中super用于类继承，有二种方式： 直接作函数使用，但只能用在构造函数中； 作为父类，可调用父类的方法和属性（包括静态）。
 		super()
+		// 
 		this.getCity = this.getCity.bind(this);
 		this.getExactAddress = this.getExactAddress.bind(this);
 		this.pois = this.pois.bind(this);
 	}
+	// controller中的函数形参需要满足router的回调形式function(req, res, next){}
 	async getCity(req, res, next){
 		const type = req.query.type;
 		let cityInfo;
