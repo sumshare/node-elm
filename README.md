@@ -1,3 +1,4 @@
+# 子进程优化问题，现在超频很严重
 # About
 
 一直考虑写一个功能齐全的完整Nodejs项目，但苦于没有找到合适的类型，而且后台系统无法直观的感受到，需要有一个前台项目配合，因此迟迟没有动笔。恰好前一段时间开源了一个[vue前端项目](https://github.com/bailicangdu/vue2-elm)，便以此为契机构筑了后台系统，并提供配套的[后台管理系统](https://github.com/bailicangdu/vue2-manage)。
